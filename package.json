@@ -1,6 +1,6 @@
 {
   "name": "rossi-cleaning",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Rossi CLEANING - Ferramenta completa de otimização para Windows 10/11",
   "main": "main.js",
   "scripts": {
