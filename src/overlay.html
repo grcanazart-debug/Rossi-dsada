@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/overlay.css">
+</head>
+<body>
+  <div id="overlay-container" class="simple">
+    <div id="fps-section" class="section" style="display: none;">
+      <div class="row fps-main"><span class="label">FPS</span><span id="fps-val" class="val">--</span></div>
+      <div class="row complex"><span class="label">FPS Médio</span><span id="fps-avg" class="val">--</span></div>
+      <div class="row complex"><span class="label">1% Low</span><span id="fps-1low" class="val">--</span></div>
+      <div class="row complex"><span class="label">0.1% Low</span><span id="fps-01low" class="val">--</span></div>
+      <div class="row complex"><span class="label">0.01% Low</span><span id="fps-001low" class="val">--</span></div>
+    </div>
+    <div id="cpu-section" class="section" style="display: none;">
+      <div class="row"><span class="label">CPU Uso</span><span id="cpu-val" class="val">--%</span></div>
+      <div class="row complex"><span class="label">Clock</span><span id="cpu-clock" class="val">-- MHz</span></div>
+    </div>
+    <div id="gpu-section" class="section" style="display: none;">
+      <div class="row"><span class="label">GPU Uso</span><span id="gpu-val" class="val">--%</span></div>
+      <div class="row complex"><span class="label">VRAM</span><span id="gpu-vram" class="val">-- GB</span></div>
+    </div>
+    <div id="ram-section" class="section" style="display: none;">
+      <div class="row"><span class="label">RAM Uso</span><span id="ram-val" class="val">--%</span></div>
+      <div class="row complex"><span class="label">Usado</span><span id="ram-used" class="val">-- GB</span></div>
+    </div>
+  </div>
+  <script src="scripts/overlay.js"></script>
+</body>
+</html>

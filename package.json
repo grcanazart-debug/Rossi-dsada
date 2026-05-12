@@ -1,0 +1,58 @@
+{
+  "name": "rossi-cleaning",
+  "version": "1.0.0",
+  "description": "Rossi CLEANING - Ferramenta completa de otimização para Windows 10/11",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64",
+    "pack": "electron-builder --dir"
+  },
+  "author": "Rossi",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.rossi.cleaning",
+    "productName": "Rossi CLEANING",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "icon": "assets/icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "assets/**/*"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "grcanazart-debug",
+        "repo": "Rossi-dsada"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.3"
+  }
+}

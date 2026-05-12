@@ -1,0 +1,68 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #00ff88;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+  -webkit-app-region: drag; /* allows moving if not completely ignore mouse */
+}
+
+#overlay-container {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  width: fit-content;
+  min-width: 150px;
+  text-shadow: 1px 1px 2px black;
+}
+
+.section {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.fps-main {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.fps-main .val {
+  color: #00ff88;
+}
+
+.label {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #eeeef0;
+}
+
+.val {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+/* Modo Simples esconde elementos complexos */
+#overlay-container.simple .complex {
+  display: none;
+}

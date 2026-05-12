@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.5);
+      font-family: 'Inter', sans-serif;
+    }
+    .lord {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 50px #00ff88;
+      animation: crazySpin 0.5s linear infinite;
+      z-index: 99;
+    }
+    @keyframes crazySpin {
+      0% { transform: rotate(0deg) scale(1); filter: hue-rotate(0deg); }
+      25% { transform: rotate(90deg) scale(1.2); filter: hue-rotate(90deg); }
+      50% { transform: rotate(180deg) scale(0.8); filter: hue-rotate(180deg); }
+      75% { transform: rotate(270deg) scale(1.4); filter: hue-rotate(270deg); }
+      100% { transform: rotate(360deg) scale(1); filter: hue-rotate(360deg); }
+    }
+    .text-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.9);
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid #00ff88;
+      box-shadow: 0 0 50px rgba(0,255,136,0.3);
+    }
+    h2 {
+      color: #00ff88;
+      margin: 0 0 20px 0;
+      font-size: 28px;
+    }
+    .progress-bar-container {
+      width: 400px;
+      height: 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #00ff88;
+      transition: width 0.1s linear;
+    }
+    #giant-face {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 9999;
+      display: none;
+      opacity: 0;
+    }
+    .animate-giant {
+      display: block !important;
+      animation: giantZoom 3s ease-in-out forwards;
+    }
+    @keyframes giantZoom {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      40% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      60% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <img id="giant-face" src="assets/giant_rossi.png" />
+  <div class="text-container" id="splash-text">
+    <h2>Verificando o servidor do<br>Lord Supremo Rossi...</h2>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress"></div>
+    </div>
+  </div>
+  <script src="scripts/splash.js"></script>
+</body>
+</html>

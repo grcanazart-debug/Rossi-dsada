@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rossi CLEANING</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <!-- Custom Titlebar -->
+  <header id="titlebar">
+    <div class="titlebar-drag">
+      <div class="app-logo">
+        <span class="logo-icon"></span>
+        <span class="logo-text">ROSSI <span class="logo-accent">CLEANING</span></span>
+      </div>
+    </div>
+    <div class="titlebar-info">
+      <span id="sys-cpu" class="sys-badge">CPU: ---%</span>
+      <span id="sys-ram" class="sys-badge">RAM: ---%</span>
+    </div>
+    <div class="titlebar-controls">
+      <button id="btn-min" class="tb-btn" onclick="rossi.minimize()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><rect y="5" width="12" height="2" fill="currentColor"/></svg>
+      </button>
+      <button id="btn-max" class="tb-btn" onclick="rossi.maximize()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <button id="btn-close" class="tb-btn tb-close" onclick="rossi.close()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main App -->
+  <div id="app">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div class="sidebar-tabs">
+        <button class="tab-btn active" data-tab="limpeza" title="Limpeza do Sistema">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Limpeza</span>
+        </button>
+        <button class="tab-btn" data-tab="otimizacao" title="Otimização & Tweaks">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Otimização</span>
+        </button>
+        <button class="tab-btn" data-tab="aplicativos" title="Aplicativos">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Apps</span>
+        </button>
+        <button class="tab-btn" data-tab="personalizacao" title="Personalização Visual">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Visual</span>
+        </button>
+        <button class="tab-btn" data-tab="bloatware" title="Remover Bloatware">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Bloatware</span>
+        </button>
+        <button class="tab-btn" data-tab="monitoramento" title="Monitoramento de Hardware">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Monitor</span>
+        </button>
+        <button class="tab-btn" data-tab="overclock" title="Overclock & Drivers">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Overclock</span>
+        </button>
+        <button class="tab-btn" data-tab="windows" title="Windows ISO & Reinstalação">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Windows</span>
+        </button>
+      </div>
+      <div class="sidebar-footer">
+        <span class="version">v1.0.0</span>
+      </div>
+    </nav>
+
+    <!-- Content Area -->
+    <main id="content">
+      <div id="tab-header">
+        <div>
+          <h1 id="tab-title">Limpeza do Sistema</h1>
+          <p id="tab-desc">Remova arquivos temporários e cache para liberar espaço</p>
+        </div>
+        <div id="tab-actions">
+          <button class="action-btn" id="btn-select-all">
+            <span>[x]</span> Selecionar Tudo
+          </button>
+          <button class="action-btn" id="btn-deselect-all">
+            <span>[ ]</span> Desmarcar Tudo
+          </button>
+          <button class="action-btn btn-execute" id="btn-execute">
+            <span>></span> Executar Selecionados
+          </button>
+        </div>
+      </div>
+      <div id="verify-progress-container" style="height: 2px; background: rgba(255,255,255,0.05); width: 100%; display: none;">
+        <div id="verify-progress-bar" style="height: 100%; background: var(--accent); width: 0%; transition: width 0.2s, opacity 0.3s; opacity: 1;"></div>
+      </div>
+      <div id="tab-content"></div>
+
+      <!-- Progress Overlay -->
+      <div id="progress-overlay" class="hidden">
+        <div class="progress-card">
+          <h2>Executando tarefas...</h2>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+          <p id="progress-text">Iniciando...</p>
+          <div id="progress-log"></div>
+        </div>
+      </div>
+
+      <!-- Update Modal -->
+      <div id="update-modal" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter:blur(5px);z-index:9999;display:none;justify-content:center;align-items:center;">
+        <div class="progress-card" style="width:400px;text-align:center;">
+          <h2 style="color:var(--accent);margin-bottom:10px;">Atualização Disponível!</h2>
+          <p id="update-version-text" style="color:var(--text-secondary);font-size:14px;margin-bottom:20px;">Uma nova versão do Lord Supremo Rossi está disponível.</p>
+          
+          <div id="update-progress-container" style="display:none;margin-bottom:20px;">
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="update-progress-bar"></div>
+            </div>
+            <p id="update-progress-text" style="font-size:12px;color:var(--text-muted);margin-top:8px;">Baixando: 0%</p>
+          </div>
+
+          <div id="update-actions" style="display:flex;gap:10px;justify-content:center;">
+            <button id="btn-update-now" class="action-btn btn-execute" style="width:140px;">Atualizar Agora</button>
+            <button id="btn-update-later" class="action-btn" style="width:140px;background:rgba(255,255,255,0.05);">Lembrar Depois</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
