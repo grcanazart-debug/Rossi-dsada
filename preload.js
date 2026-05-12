@@ -38,5 +38,8 @@ contextBridge.exposeInMainWorld('rossi', {
   onUpdateNotAvailable: (callback) => ipcRenderer.on('update-not-available', (_, info) => callback(info)),
   onDownloadProgress: (callback) => ipcRenderer.on('download-progress', (_, progressObj) => callback(progressObj)),
   onUpdateDownloaded: (callback) => ipcRenderer.on('update-downloaded', (_, info) => callback(info)),
-  onUpdateError: (callback) => ipcRenderer.on('update-error', (_, err) => callback(err))
+  onUpdateError: (callback) => ipcRenderer.on('update-error', (_, err) => callback(err)),
+
+  // Utils
+  openRestorePoint: () => ipcRenderer.send('open-restore-point')
 });

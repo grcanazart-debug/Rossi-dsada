@@ -958,4 +958,41 @@ function setupUpdater() {
   });
 }
 
+function setupRestorePointWarning() {
+  const modal = document.getElementById('restore-point-modal');
+  const btnCreate = document.getElementById('btn-create-restore');
+  const btnClose = document.getElementById('btn-close-restore');
+  const chkNeverShow = document.getElementById('chk-never-show-restore');
+
+  if (!modal || !btnCreate || !btnClose || !chkNeverShow) return;
+
+  // Check if user previously asked not to show this
+  if (localStorage.getItem('hideRestorePointWarning') === 'true') {
+    return;
+  }
+
+  // Show the modal shortly after the app is ready
+  setTimeout(() => {
+    modal.style.display = 'flex';
+  }, 500);
+
+  const savePreference = () => {
+    if (chkNeverShow.checked) {
+      localStorage.setItem('hideRestorePointWarning', 'true');
+    }
+  };
+
+  btnCreate.addEventListener('click', () => {
+    savePreference();
+    rossi.openRestorePoint();
+    modal.style.display = 'none';
+  });
+
+  btnClose.addEventListener('click', () => {
+    savePreference();
+    modal.style.display = 'none';
+  });
+}
+
 setupUpdater();
+setupRestorePointWarning();

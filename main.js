@@ -376,6 +376,12 @@ ipcMain.on('install-update', () => {
   autoUpdater.quitAndInstall(false, true);
 });
 
+ipcMain.on('open-restore-point', () => {
+  exec('SystemPropertiesProtection.exe', (error) => {
+    if (error) console.error("Erro ao abrir ponto de restauração:", error);
+  });
+});
+
 app.on('will-quit', () => {
   globalShortcut.unregisterAll();
 });

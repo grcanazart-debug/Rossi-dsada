@@ -73,7 +73,7 @@
         </button>
       </div>
       <div class="sidebar-footer">
-        <span class="version">v3.0.0</span>
+        <span class="version">v5.0.0</span>
       </div>
     </nav>
 
@@ -132,6 +132,27 @@
           </div>
         </div>
       </div>
+
+      <!-- Restore Point Warning Modal -->
+      <div id="restore-point-modal" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:9998;display:none;justify-content:center;align-items:center;">
+        <div class="progress-card" style="width:500px;text-align:center;border:2px solid var(--red);box-shadow:0 0 20px rgba(255,0,0,0.1);">
+          <h2 style="color:var(--red);margin-bottom:15px;text-transform:uppercase;font-weight:900;">⚠️ AVISO IMPORTANTE ⚠️</h2>
+          <p style="color:var(--text-primary);font-size:16px;line-height:1.6;margin-bottom:25px;font-weight:600;text-align:justify;background:rgba(255,0,0,0.05);padding:15px;border-radius:8px;">
+            "CARA, O APP É SEGURO, PORÉM NÃO CONSIGO PREVER TODAS AS MERDAS QUE TALVEZ VOCÊ FAÇA, ENTÃO CRIA UM PONTO DE RESTAURAÇÃO E FICA TRANQUILO, SUAVE ENTENDEU RAPAZ? ENTÃO FAZ"
+          </p>
+          
+          <div style="display:flex;gap:15px;justify-content:center;margin-bottom:15px;">
+            <button id="btn-create-restore" class="action-btn" style="background:var(--red);color:#fff;font-weight:bold;flex:1;">Criar Ponto de Restauração Agora</button>
+            <button id="btn-close-restore" class="action-btn" style="background:rgba(255,255,255,0.1);flex:1;">Entendi, Suave</button>
+          </div>
+          
+          <label style="display:flex;align-items:center;justify-content:center;gap:8px;color:var(--text-secondary);font-size:12px;cursor:pointer;">
+            <input type="checkbox" id="chk-never-show-restore" style="accent-color:var(--red);">
+            Não encher o meu saco com esse aviso novamente
+          </label>
+        </div>
+      </div>
+
     </main>
   </div>
 
